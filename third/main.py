@@ -24,3 +24,25 @@ print(f"Sum: {x.sum()}")
 
 print(f"Index where max value occurs: {x.argmax()}")
 print(f"Index where min value occurs: {x.argmin()}")
+
+print(f"x.reshape: {x.reshape(1, 10)}")
+print(f"x.view: {x.view(1, 10)}")
+
+print(f"torch.stack: {torch.stack([x, torch.arange(100, 200, 10)])}")
+print(f"x.reshape.squeeze: {x.reshape(1, 10).squeeze()}")
+assert x.reshape(1, 10).squeeze().equal(x)
+
+print(f"x.unsqueeze(0): {x.unsqueeze(0)}")
+print(f"x.unsqueeze(1): {x.unsqueeze(1)}")
+
+y = torch.rand(size=(224, 225, 3))
+
+y_permutated = y.permute(2, 0, 1)
+
+print(f"y shape: {y.shape}")
+print(f"y_permutated shape: {y_permutated.shape}")
+
+x_gpu = x.to("mps")
+print(f"x_gpu: {x_gpu}")
+x_cpu = x_gpu.cpu()
+print(f"x_cpu: {x_cpu}")
